@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      TradeCalc <ion-icon name="calculator"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Funds Available <ion-icon name="logo-usd"></ion-icon>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="padding:5px;">
+      <ion-item>
+        <ion-label position="floating" color="primary">Enter Total Funds Available</ion-label>
+        <ion-input type="number" clearInput [(ngModel)]="fundsAvaliable" (ionChange)="onFundsChange()"
+          text-right2 style="font-size: x-large;"></ion-input>
+      </ion-item>
+      <ion-range min="0" max="100" step="10" pin="true" snaps="true" [(ngModel)]="fundsPercentage" (ionChange)="onFundsChange()">
+        <ion-label slot="start" style="margin-right:15px;">0%</ion-label>
+        <ion-label slot="end" style="margin-left:15px;">{{this.fundsPercentage}}% Used</ion-label>
+      </ion-range>
+      <ion-range min="1" max="10" step="1" pin="true" snaps="true" [(ngModel)]="numberOfTrades" (ionChange)="onFundsChange()">
+        <ion-label slot="start" style="margin-right:15px;">1</ion-label>
+        <ion-label slot="end" style="margin-left:15px;">{{this.numberOfTrades}} Trades</ion-label>
+      </ion-range>
+      <ion-item>
+        <ion-label text-right style="font-size: x-large;">{{this.fundsAvaliablePerTrade}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Stock Details <ion-icon name="image"></ion-icon>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="padding:0px;">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Stop {{percentageLoss}}%</ion-label>
+              <ion-input type="number" color="" [(ngModel)]="stockStop" (ionChange)="onStockChange()" style="font-size: large;"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked" color="primary">Entry</ion-label>
+              <ion-input type="number" color="primary" [(ngModel)]="stockEntry" (ionChange)="onStockChange()"
+                style="font-size: large;"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Exit {{percentageGain}}%</ion-label>
+              <ion-input type="number" color="success" [(ngModel)]="stockExit" (ionChange)="onStockChange()"
+                style="font-size: large;"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked" color="danger">Loss:$</ion-label>
+              <ion-input type="number" color="danger" ([ngModel])="stockLoss" (ionChange)="onStockChange()"  style="font-size: large;"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked" color="success">Profit:$</ion-label>
+              <ion-input type="number" color="success" [(ngModel)]="stockProfit" (ionChange)="onStockChange()"
+                style="font-size: large;"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-range dualKnobs="true" [min]=percentageGainLossMin [max]=percentageGainLossMax step="1" pin="true" snaps="true" [(ngModel)]="percentageGainLoss"
+        (ionChange)="onPercentageGainLossChange()" color="">
+        <ion-label slot="start" style="margin-right:10px;">-4%</ion-label>
+        <ion-label slot="end" style="margin-left:10px;">20% Gain</ion-label>
+      </ion-range>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+
+</ion-content>

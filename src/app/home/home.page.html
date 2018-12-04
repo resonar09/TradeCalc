@@ -11,7 +11,7 @@
 
 <ion-content padding>
   <ion-card>
-    <ion-card-header>
+    <ion-card-header style="padding-bottom:0px;">
       <ion-card-title>Funds Available <ion-icon name="logo-usd"></ion-icon>
       </ion-card-title>
     </ion-card-header>
@@ -22,12 +22,12 @@
           text-right2 style="font-size: x-large;"></ion-input>
       </ion-item>
       <ion-range min="0" max="100" step="10" pin="true" snaps="true" [(ngModel)]="fundsPercentage" (ionChange)="onFundsChange()">
-        <ion-label slot="start" style="margin-right:15px;">0%</ion-label>
-        <ion-label slot="end" style="margin-left:15px;">{{this.fundsPercentage}}% Used</ion-label>
+        <ion-label slot="start" style="margin-right:20px;">0%</ion-label>
+        <ion-label slot="end" style="margin-left:20px;">{{this.fundsPercentage}}% Used</ion-label>
       </ion-range>
       <ion-range min="1" max="10" step="1" pin="true" snaps="true" [(ngModel)]="numberOfTrades" (ionChange)="onFundsChange()">
-        <ion-label slot="start" style="margin-right:15px;">1</ion-label>
-        <ion-label slot="end" style="margin-left:15px;">{{this.numberOfTrades}} Trades</ion-label>
+        <ion-label slot="start" style="margin-right:20px;">1</ion-label>
+        <ion-label slot="end" style="margin-left:20px;">{{this.numberOfTrades}} Trades</ion-label>
       </ion-range>
       <ion-item>
         <ion-label text-right style="font-size: x-large;">{{this.fundsAvaliablePerTrade}}</ion-label>
@@ -36,10 +36,9 @@
   </ion-card>
 
   <ion-card>
-    <ion-card-header>
+    <ion-card-header style="padding-bottom:0px;">
       <ion-card-title>Stock Details <ion-icon name="image"></ion-icon>
-          <ion-label float-right>Shares: {{this.sharesAvailable}}</ion-label>
-          <ion-input type="number" color="" [(ngModel)]="stockStop" (ionChange)="onStockChange()" style="font-size: large;"></ion-input>
+          <ion-input text-right type="number" color="" [(ngModel)]="sharesAvailable" (ionChange)="onStockChange()" style="font-size: large;"></ion-input>
       </ion-card-title>
     </ion-card-header>
     <ion-card-content style="padding:0px;">
@@ -82,10 +81,10 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-range dualKnobs="true" [min]=percentageGainLossMin [max]=percentageGainLossMax step="1" pin="true" snaps="true" [(ngModel)]="percentageGainLoss"
+      <ion-range dualKnobs="true" [min]=percentageGainLossMin [max]=percentageGainLossMax  pin="true"  [(ngModel)]="percentageGainLoss"
         (ionChange)="onPercentageGainLossChange()" color="">
-        <ion-label slot="start" style="margin-right:10px;">-4%</ion-label>
-        <ion-label slot="end" style="margin-left:10px;">20% Gain</ion-label>
+        <ion-label slot="start" style="margin-right:20px;">-4%</ion-label>
+        <ion-label slot="end" style="margin-left:20px;">20% Gain</ion-label>
       </ion-range>
     </ion-card-content>
   </ion-card>

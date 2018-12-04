@@ -81,7 +81,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-range dualKnobs="true" [min]=percentageGainLossMin [max]=percentageGainLossMax  pin="true"  [(ngModel)]="percentageGainLoss"
+      <ion-range dualKnobs="true" [min]=percentageGainLossMin [max]=percentageGainLossMax  pin="true" step="1" snaps="true"  [(ngModel)]="percentageGainLoss"
         (ionChange)="onPercentageGainLossChange()" color="">
         <ion-label slot="start" style="margin-right:20px;">-4%</ion-label>
         <ion-label slot="end" style="margin-left:20px;">20% Gain</ion-label>

@@ -15,10 +15,11 @@ export class HomePage {
   private stockEntry: Number;
   private stockExit: Number;
   private stockStop: Number;
-  private stockLoss: Number;
-  private stockProfit: Number;
+  private stockLoss: String;
+  private stockProfit: String;
   private percentageGainLossMin: Number = -4;
   private percentageGainLossMax: Number = 20;
+  private sharesAvailable: Number;
   private percentageGainLoss: any = {
     upper: this.percentageGainLossMax,
     lower: this.percentageGainLossMin
@@ -57,11 +58,11 @@ export class HomePage {
           this.stockLoss = this.getCurrency((this.stockEntry.valueOf() * this.percentageLoss.valueOf() / 100) * this.fundsAvaliablePerTrade.valueOf());
           // tslint:disable-next-line:max-line-length
           this.stockProfit = this.getCurrency((this.stockEntry.valueOf() * this.percentageGain.valueOf() / 100) * this.fundsAvaliablePerTrade.valueOf());
+          this.sharesAvailable = this.fundsAvaliablePerTrade.valueOf() / this.stockEntry.valueOf();
         }
     }
   }
-  getCurrency(amount: number) {
-    //return this.currencyPipe.transform(amount, 'USD', true, '1.2-2');
-    return amount;
+  getCurrency(amount: Number): String {
+    return amount.toString();
   }
 }

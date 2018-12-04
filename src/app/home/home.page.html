@@ -38,6 +38,8 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title>Stock Details <ion-icon name="image"></ion-icon>
+          <ion-label float-right>Shares: {{this.sharesAvailable}}</ion-label>
+          <ion-input type="number" color="" [(ngModel)]="stockStop" (ionChange)="onStockChange()" style="font-size: large;"></ion-input>
       </ion-card-title>
     </ion-card-header>
     <ion-card-content style="padding:0px;">
@@ -45,7 +47,7 @@
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-label position="stacked">Stop {{percentageLoss}}%</ion-label>
+              <ion-label position="stacked">Stop {{this.percentageLoss}}%</ion-label>
               <ion-input type="number" color="" [(ngModel)]="stockStop" (ionChange)="onStockChange()" style="font-size: large;"></ion-input>
             </ion-item>
           </ion-col>
@@ -58,7 +60,7 @@
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-label position="stacked">Exit {{percentageGain}}%</ion-label>
+              <ion-label position="stacked">Exit {{this.percentageGain}}%</ion-label>
               <ion-input type="number" color="success" [(ngModel)]="stockExit" (ionChange)="onStockChange()"
                 style="font-size: large;"></ion-input>
             </ion-item>
@@ -68,13 +70,13 @@
           <ion-col>
             <ion-item>
               <ion-label position="stacked" color="danger">Loss:$</ion-label>
-              <ion-input type="number" color="danger" ([ngModel])="stockLoss" (ionChange)="onStockChange()"  style="font-size: large;"></ion-input>
+              <ion-input type="text" color="danger" [ngModel]="stockLoss | currency" (ionChange)="onStockChange()"  style="font-size: large;"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
               <ion-label position="stacked" color="success">Profit:$</ion-label>
-              <ion-input type="number" color="success" [(ngModel)]="stockProfit" (ionChange)="onStockChange()"
+              <ion-input type="text" color="success" [ngModel]="stockProfit | currency" (ionChange)="onStockChange()"
                 style="font-size: large;"></ion-input>
             </ion-item>
           </ion-col>

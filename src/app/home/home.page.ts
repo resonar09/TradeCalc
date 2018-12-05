@@ -11,6 +11,7 @@ export class HomePage {
   private fundsPercentage: Number = 100;
   private numberOfTrades: Number = 1;
   private fundsAvaliable: Number;
+  private fundsAvaliablePerTradeLabel: String;
   private fundsAvaliablePerTrade: Number;
   private stockEntry: Number;
   private stockExit: String;
@@ -34,10 +35,8 @@ export class HomePage {
   onFundsChange() {
     if (this.fundsAvaliable > 0) {
       // tslint:disable-next-line:max-line-length
-      this.fundsAvaliablePerTrade =
-        (this.fundsAvaliable.valueOf() *
-          (this.fundsPercentage.valueOf() / 100)) /
-        this.numberOfTrades.valueOf();
+      this.fundsAvaliablePerTrade = (this.fundsAvaliable.valueOf() * (this.fundsPercentage.valueOf() / 100)) / this.numberOfTrades.valueOf();
+      this.fundsAvaliablePerTradeLabel = this.getCurrency(this.fundsAvaliablePerTrade);
     }
     this.onStockChange();
   }
@@ -52,7 +51,7 @@ export class HomePage {
     if (this.stockEntry > 0) {
         this.stockStop = this.setDecimal(this.stockEntry.valueOf() + (this.stockEntry.valueOf() * this.percentageLoss.valueOf() / 100));
         this.stockExit = this.setDecimal(this.stockEntry.valueOf() + (this.stockEntry.valueOf() * this.percentageGain.valueOf() / 100));
-        if (this.fundsAvaliablePerTrade > 0) {
+        if (this.fundsAvaliablePerTrade) {
           console.log('onStockChange ' + this.stockEntry + ':' + this.percentageLoss.valueOf() / 100);
           this.sharesAvailable = Math.floor(this.fundsAvaliablePerTrade.valueOf() / this.stockEntry.valueOf());
           // tslint:disable-next-line:max-line-length

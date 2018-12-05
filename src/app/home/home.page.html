@@ -30,7 +30,7 @@
         <ion-label slot="end" style="margin-left:20px;">{{this.numberOfTrades}} Trades</ion-label>
       </ion-range>
       <ion-item>
-        <ion-label text-right style="font-size: x-large;">{{this.fundsAvaliablePerTrade}}</ion-label>
+        <ion-label text-right style="font-size: x-large;">{{this.fundsAvaliablePerTrade | currency}}</ion-label>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -83,8 +83,8 @@
       </ion-grid>
       <ion-range dualKnobs="true" [min]=percentageGainLossMin [max]=percentageGainLossMax  pin="true" step="1" snaps="true"  [(ngModel)]="percentageGainLoss"
         (ionChange)="onPercentageGainLossChange()" color="">
-        <ion-label slot="start" style="margin-right:20px;">-4%</ion-label>
-        <ion-label slot="end" style="margin-left:20px;">20% Gain</ion-label>
+        <ion-label slot="start" style="margin-right:20px;">{{this.percentageLoss}}%</ion-label>
+        <ion-label slot="end" style="margin-left:20px;">{{this.percentageGain}}% Gain</ion-label>
       </ion-range>
     </ion-card-content>
   </ion-card>
